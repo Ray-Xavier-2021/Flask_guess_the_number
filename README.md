@@ -2,7 +2,7 @@
 
 This project was built by me using Python, RapidAPI and Flask. It will be added to my portfolio showcase as one of my projects.
 
-[Live Deployment]()
+[Live Deployment](https://flask-guess-the-number.ray-xavier-2021.repl.co/)
 
 ![flask_youtube]()
 
