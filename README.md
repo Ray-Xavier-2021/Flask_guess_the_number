@@ -11,6 +11,7 @@ This project was built by me using Python, RapidAPI and Flask. It will be added 
 - CSS
 - Python
 - Flask
+- Database
 
 ## Installation
 No need to install any software.
