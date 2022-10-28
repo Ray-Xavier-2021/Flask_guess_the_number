@@ -6,6 +6,13 @@ app = Flask(__name__)
 # Random computer number
 computer_choice = choice(range(1, 101))
 
+# test
+print(f'computer picked {computer_choice}')
+
+# Set guesses to an empty list
+guesses = []
+
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
   # Get user guessed number if request method is 'POST'
@@ -14,17 +21,32 @@ def index():
     guess = int(request.form['number_guess'])
     # Output message
     message = check_number_show_message(guess, computer_choice)
+    # Append output message to empty guess list
+    guesses.append(message)
+    # test
     print(message)
+    print(guesses)
 
-
-  return render_template('index.html')
+  # Render template w/ guesses in reverse
+  return render_template('index.html', guesses=reversed(guesses))
 
 # Reset function
 @app.route('/reset')
 def reset():
-  return 'RESET PAGE'
+  # Reset computer choice and guesses list
+  computer_choice = choice(range(1, 101))
+  guesses = []
+  return render_template('index.html', guesses=reversed(guesses))
 
 # Create a function that compares numbers and returns according message
+'''
+It will take in the guessed number and the computer number 
+2 arguments
+
+>>> check_number_show_message(guessed_number=5, computer_number=10)
+  '5 is too low
+
+'''
 def check_number_show_message(guessed_number, computer_number):
   if guessed_number < computer_number:
     return f'{guessed_number} is too low'
